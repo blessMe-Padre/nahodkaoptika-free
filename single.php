@@ -35,11 +35,11 @@ get_header();
                     <h1 class="mb-5 main-product__title"><?php the_title(); ?></h1>
                     <div class="flex gap-[10px]">
                         <span class="text-gray">Производитель: </span>
-                        <span class="text-gray"><?= get_field("производитель"); ?></span>
+                        <span class="text-gray"><?= get_field("country"); ?></span>
                     </div>
                     <div class="flex gap-[10px]">
                         <span class="text-gray">Пол: </span>
-                        <span class="text-gray"><?= get_field("пол"); ?></span>
+                        <span class="text-gray"><?= get_field("sex"); ?></span>
                     </div>
                     <div class="flex gap-[10px]">
                         <span class="text-gray">Вид оправы: </span>
@@ -57,7 +57,7 @@ get_header();
                     <div class="flex items-center gap-5 mt-7">
                         <a class="default-button popup-link py-2" href="#popup2">Оставить заявку</a>
                         <p class="product__price">
-                            <?= number_format(get_field("цена"), 0, '.', ' '); ?><span>&nbsp;₽</span>
+                            <?= number_format(get_field("price"), 0, '.', ' '); ?><span>&nbsp;₽</span>
                         </p>
                     </div>
 
@@ -108,7 +108,7 @@ get_header();
                             <div class="card__wrapper">
                                 <h3 class="card__title"><?php the_title(); ?></h3>
                                 <p class="card__price">
-                                    <?= number_format(get_field("цена"), 0, '.', ' '); ?><span>&nbsp;₽</span>
+                                    <?= number_format(get_field("price"), 0, '.', ' '); ?><span>&nbsp;₽</span>
                                 </p>
                             </div>
                         </a>

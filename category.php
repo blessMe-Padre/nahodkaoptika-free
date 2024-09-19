@@ -64,9 +64,7 @@ get_header();
                             </svg>
                         </button>
                         <div class="_tabs-content">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
+                            <?php echo do_shortcode('[fe_widget id=65]'); ?>
                         </div>
                     </div>
                     <div class="_tabs-accordion">
@@ -151,7 +149,7 @@ get_header();
                                     <div class="card__wrapper">
                                         <h3 class="card__title"><?php the_title(); ?></h3>
                                         <p class="card__price">
-                                            <?= number_format(get_field("цена"), 0, '.', ' '); ?><span>&nbsp;₽</span>
+                                            <?= number_format(get_field("price"), 0, '.', ' '); ?><span>&nbsp;₽</span>
                                         </p>
                                     </div>
                                 </a>

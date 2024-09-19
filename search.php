@@ -34,7 +34,7 @@ Template Name: Страница поиска - шаблон
                             <div class="card__wrapper">
                                 <h3 class="card__title"><?php the_title(); ?></h3>
                                 <p class="card__price">
-                                    <?= number_format(get_field("цена"), 0, '.', ' '); ?><span>&nbsp;₽</span>
+                                    <?= number_format(get_field("price"), 0, '.', ' '); ?><span>&nbsp;₽</span>
                                 </p>
                             </div>
                         </a>
