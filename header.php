@@ -23,11 +23,7 @@
                     <div class="flex items-center gap-[20px] w-full">
                         <a href="/catalog"
                             class="bg-black text-white py-[10px] px-[20px] header-catalog-link">Каталог</a>
-                        <div class="relative flex items-center gap-[20px] w-full">
-                            <input class="search-input" type="search" placeholder="Поиск по товарам...">
-                            <img src="<?php echo get_template_directory_uri() ?>/src/img/icons/search.svg" alt="Search"
-                                class="h-6 w-6 absolute top-1/2 left-[5px] transform -translate-y-1/2" />
-                        </div>
+                        <?php get_search_form(); ?>
                     </div>
 
                 </div>
