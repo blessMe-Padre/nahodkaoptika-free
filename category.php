@@ -25,21 +25,32 @@ get_header();
                         height="20" alt="Фильтровать">
                     <span>Фильтры</span>
                 </button>
-
                 <ul class="category__header-list">
-                    <li>
-                        <a href="#" class="category__header-link is-active">Медицинские очки</a>
-                    </li>
-                    <li>
-                        <a href="#" class="category__header-link">Солнцезащитные очки</a>
-                    </li>
-                    <li>
-                        <a href="#" class="category__header-link">Аксессуары</a>
-                    </li>
-                    <li>
-                        <a href="#" class="category__header-link">Контактные линзы</a>
-                    </li>
+                    <?php
+                    // Получаем текущую категорию, если находимся на странице категории
+                    $current_category = get_queried_object();
+
+                    // Проверяем, является ли текущий объект категорией
+                    $current_category_id = ($current_category && isset($current_category->term_id)) ? $current_category->term_id : 0;
+
+                    // Получаем список категорий, исключая определенные ID
+                    $categories = get_categories(array(
+                        'exclude' => array(7, 8) // Исключаем категории с ID 7 и 8
+                    ));
+
+                    if (!empty($categories)):
+                        foreach ($categories as $category):
+                            $active_class = ($category->term_id == $current_category_id) ? 'is-active' : '';
+                            ?>
+                            <li>
+                                <a href="<?php echo get_category_link($category->term_id); ?>"
+                                    class="category__header-link <?php echo $active_class; ?>"><?php echo esc_html($category->name); ?></a>
+                            </li>
+                        <?php endforeach;
+                    endif;
+                    ?>
                 </ul>
+
             </div>
 
             <div class="category__wrapper relative">

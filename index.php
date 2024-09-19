@@ -85,7 +85,9 @@ get_header();
             <ul class="category-section__list">
 
                 <?php
-                $categories = get_categories();
+                $categories = get_categories(array(
+                    'exclude' => array(7, 8) // Исключаем категории с ID 7 и 8
+                ));
 
                 if (!empty($categories)):
                     foreach ($categories as $category): ?>
