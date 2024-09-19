@@ -19,10 +19,22 @@
             <div>
                 <p class="">Каталог</p>
                 <ul class="text-gray">
-                    <li><a href="#">Медицинские очки</a></li>
-                    <li><a href="#">Солнцезащитные очки</a></li>
-                    <li><a href="#">Аксессуары</a></li>
-                    <li><a href="#">Контактные линзы</a></li>
+                    <?php
+                    $categories = get_categories(array(
+                        'exclude' => array(7, 8) // Исключаем категории с ID 7 и 8
+                    ));
+
+                    if (!empty($categories)):
+                        foreach ($categories as $category): ?>
+
+                            <li>
+                                <a href="<?php echo get_category_link($category->term_id); ?>">
+                                    <?php echo esc_html($category->name); ?>
+                                </a>
+                            </li>
+                        <?php endforeach;
+                    endif;
+                    ?>
                 </ul>
             </div>
 

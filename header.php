@@ -41,7 +41,7 @@
                     ?>
 
                     <div class="header__social-wrapper">
-                        <ul class="social-list">
+                        <ul class="social-list social-list--header">
                             <li>
                                 <a class="social-link social-link--header" href="#">
                                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
@@ -85,14 +85,14 @@
 
             <div class="mobile-menu">
                 <ul class="mb-7">
-                    <li><a href="#">Каталог</a></li>
-                    <li><a href="#">Медицинские очки</a></li>
-                    <li><a href="#">Солнцезащитные очки</a></li>
-                    <li><a href="#">Аксессуары</a></li>
-                    <li><a href="#">Контактные линзы</a></li>
-                    <li><a href="#">Услуги</a></li>
-                    <li><a href="#">О нас</a></li>
-                    <li><a href="#">Контакты</a></li>
+                    <li><a href="/catalog/">Каталог</a></li>
+                    <li><a href="/category/vedicina/">Медицинские очки</a></li>
+                    <li><a href="/category/sun/">Солнцезащитные очки</a></li>
+                    <li><a href="/category/acsessuari/">Аксессуары</a></li>
+                    <li><a href="/category/linzi/">Контактные линзы</a></li>
+                    <li><a href="/услуги/">Услуги</a></li>
+                    <li><a href="/о-компании/">О нас</a></li>
+                    <li><a href="/контакты/">Контакты</a></li>
                 </ul>
 
                 <div class="header__social-wrapper">

@@ -1559,6 +1559,10 @@ Version: 1.0
     .social-list {
         margin-bottom: 30px;
     }
+
+    .social-list--header {
+        margin-bottom: 0;
+    }
 }
 
 @media (max-width: 450px) {
