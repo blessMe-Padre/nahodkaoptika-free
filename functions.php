@@ -46,3 +46,13 @@ function add_menu()
 {
     register_nav_menu('main', 'главное меню сайта');
 }
+
+
+function custom_category_pagination($query)
+{
+    if (!is_admin() && $query->is_main_query() && $query->is_category()) {
+        // Убедитесь, что это запрос категории и главный запрос
+        $query->set('posts_per_page', 9); // Установите нужное количество постов на страницу
+    }
+}
+add_action('pre_get_posts', 'custom_category_pagination');

@@ -167,17 +167,18 @@ get_header();
                 </ul>
 
                 <!-- Добавление пагинации -->
+
                 <div class="pagination">
                     <?php
-                    // Вывод пагинации
+                    $big = 999999999; // нужно для уникальности параметра в ссылке
+                    
                     echo paginate_links(array(
+                        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))), // Формат ссылки для пагинации
+                        'format' => '?paged=%#%', // Параметр пагинации
+                        'current' => max(1, get_query_var('paged')), // Текущая страница
                         'total' => $query->max_num_pages, // Общее количество страниц
-                        'current' => $paged, // Текущая страница
-                        'format' => '?paged=%#%', // Формат ссылки
-                        'show_all' => false,
-                        'type' => 'plain',
-                        'prev_text' => __('« Назад'), // Текст ссылки "Назад"
-                        'next_text' => __('Вперед »'), // Текст ссылки "Вперед"
+                        'prev_text' => __('&larr;'), // Текст ссылки "Назад"
+                        'next_text' => __('&rarr;'), // Текст ссылки "Вперед"
                     ));
                     ?>
                 </div>

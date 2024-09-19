@@ -2590,3 +2590,17 @@ body {
         line-height: 1.25rem;
     }
 }
+
+.pagination {
+    margin-top: 20px;
+    grid-column: span 2;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination a {
+    text-decoration: underline;
+}
