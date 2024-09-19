@@ -83,42 +83,30 @@ get_header();
         <div class="container">
             <h2 class="title">Категории</h2>
             <ul class="category-section__list">
-                <li class="category-section__item">
-                    <a href="#">
-                        <div class="image-wrapper">
-                            <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-1.png"
-                                width="300" height="157" alt="product">
-                        </div>
-                        <h3>Аксессуары</h3>
-                    </a>
-                </li>
-                <li class="category-section__item">
-                    <a href="#">
-                        <div class="image-wrapper">
-                            <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-2.png"
-                                width="300" height="157" alt="product">
-                        </div>
-                        <h3>Медицинские очки</h3>
-                    </a>
-                </li>
-                <li class="category-section__item">
-                    <a href="#">
-                        <div class="image-wrapper">
-                            <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-3.png"
-                                width="300" height="157" alt="product">
-                        </div>
-                        <h3>Солнцезащитные очки</h3>
-                    </a>
-                </li>
-                <li class="category-section__item">
-                    <a href="#">
-                        <div class="image-wrapper">
-                            <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-4.png"
-                                width="300" height="157" alt="product">
-                        </div>
-                        <h3>Контактные линзы</h3>
-                    </a>
-                </li>
+
+                <?php
+                $categories = get_categories();
+
+                if (!empty($categories)):
+                    foreach ($categories as $category): ?>
+                        <?php
+                        $term_id = $category->term_id;
+                        $tag_img = get_field('изображение_категории', 'term_' . $term_id);
+                        ?>
+                        <li class="category-section__item">
+                            <a href="<?php echo get_category_link($category->term_id); ?>">
+                                <div class="image-wrapper">
+
+                                    <img src="<?php
+                                    echo $tag_img ? $tag_img : get_template_directory_uri() . '/src/img/product/image-1.png ';
+                                    ?>" />
+                                </div>
+                                <h3><?php echo esc_html($category->name); ?></h3>
+                            </a>
+                        </li>
+                    <?php endforeach;
+                endif;
+                ?>
             </ul>
         </div>
     </section>
@@ -128,65 +116,52 @@ get_header();
         <div class="container">
             <div class="title-wrapper">
                 <h2 class="title m-0">новинки</h2>
-                <a class="default-button" href="#">Посмотреть всё</a>
+                <?php
+                $category_link = get_category_link(7);
+                echo '<a class="default-button" href="' . esc_url($category_link) . '">Посмотреть всё</a>';
+                ?>
             </div>
             <ul class="products-section__wrapper">
-                <li class="card">
-                    <a href="#">
-                        <div class="card__img">
-                            <div class="image-wrapper">
-                                <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-5.png"
-                                    width="320" height="190" alt="товар">
+                <?php
+                $my_posts = get_posts(
+                    array(
+                        'numberposts' => 4,
+                        'category' => 7,
+                        'orderby' => 'rand',
+                        'order' => 'ASC',
+                        'post_type' => 'post',
+                        'suppress_filters' => true,
+                    )
+                );
+
+                foreach ($my_posts as $post) {
+                    setup_postdata($post);
+                    ?>
+                    <li class="card">
+                        <a href="<?php the_permalink(); ?>">
+                            <div class="card__img">
+                                <div class="image-wrapper">
+                                    <?php if (has_post_thumbnail()): ?>
+                                        <?php the_post_thumbnail('large', ['class' => 'main-product-img']); ?>
+                                    <?php else: ?>
+                                        <img src="<?php echo get_template_directory_uri() ?>/src/img/img-placeholder.jpg"
+                                            width="320" height="190" alt="товар">
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card__wrapper">
-                            <h3 class="card__title">Nina Ricci</h3>
-                            <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                        </div>
-                    </a>
-                </li>
-                <li class="card">
-                    <a href="#">
-                        <div class="card__img">
-                            <div class="image-wrapper">
-                                <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-6.png"
-                                    width="320" height="190" alt="товар">
+                            <div class="card__wrapper">
+                                <h3 class="card__title"><?php the_title(); ?></h3>
+                                <p class="card__price">
+                                    <?= number_format(get_field("цена"), 0, '.', ' '); ?><span>&nbsp;₽</span>
+                                </p>
                             </div>
-                        </div>
-                        <div class="card__wrapper">
-                            <h3 class="card__title">Etnia Barcelona 4 DONATE 56S</h3>
-                            <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                        </div>
-                    </a>
-                </li>
-                <li class="card">
-                    <a href="#">
-                        <div class="card__img">
-                            <div class="image-wrapper">
-                                <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-7.png"
-                                    width="320" height="190" alt="товар">
-                            </div>
-                        </div>
-                        <div class="card__wrapper">
-                            <h3 class="card__title">Gucci 0340S</h3>
-                            <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                        </div>
-                    </a>
-                </li>
-                <li class="card">
-                    <a href="#">
-                        <div class="card__img">
-                            <div class="image-wrapper">
-                                <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-8.png"
-                                    width="320" height="190" alt="товар">
-                            </div>
-                        </div>
-                        <div class="card__wrapper">
-                            <h3 class="card__title">Ultraflex Plus 1 Day 30pk (Somofilcon A)</h3>
-                            <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                        </div>
-                    </a>
-                </li>
+                        </a>
+                    </li>
+
+                    <?php
+                }
+                wp_reset_postdata();
+                ?>
             </ul>
         </div>
     </section>
@@ -195,70 +170,56 @@ get_header();
     <section class="products-section">
         <div class="container">
             <div class="title-wrapper">
-                <h2 class="title m-0">Популярные товары</h2>
-                <a class="default-button" href="#">Посмотреть всё</a>
+                <h2 class="title m-0">Популярны товары</h2>
+                <?php
+                $category_link = get_category_link(8);
+                echo '<a class="default-button" href="' . esc_url($category_link) . '">Посмотреть всё</a>';
+                ?>
             </div>
             <ul class="products-section__wrapper">
-                <li class="card">
-                    <a href="#">
-                        <div class="card__img">
-                            <div class="image-wrapper">
-                                <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-5.png"
-                                    width="320" height="190" alt="товар">
+                <?php
+                $my_posts = get_posts(
+                    array(
+                        'numberposts' => 4,
+                        'category' => 8,
+                        'orderby' => 'rand',
+                        'order' => 'ASC',
+                        'post_type' => 'post',
+                        'suppress_filters' => true,
+                    )
+                );
+
+                foreach ($my_posts as $post) {
+                    setup_postdata($post);
+                    ?>
+                    <li class="card">
+                        <a href="<?php the_permalink(); ?>">
+                            <div class="card__img">
+                                <div class="image-wrapper">
+                                    <?php if (has_post_thumbnail()): ?>
+                                        <?php the_post_thumbnail('large', ['class' => 'main-product-img']); ?>
+                                    <?php else: ?>
+                                        <img src="<?php echo get_template_directory_uri() ?>/src/img/img-placeholder.jpg"
+                                            width="320" height="190" alt="товар">
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card__wrapper">
-                            <h3 class="card__title">Nina Ricci</h3>
-                            <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                        </div>
-                    </a>
-                </li>
-                <li class="card">
-                    <a href="#">
-                        <div class="card__img">
-                            <div class="image-wrapper">
-                                <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-6.png"
-                                    width="320" height="190" alt="товар">
+                            <div class="card__wrapper">
+                                <h3 class="card__title"><?php the_title(); ?></h3>
+                                <p class="card__price">
+                                    <?= number_format(get_field("цена"), 0, '.', ' '); ?><span>&nbsp;₽</span>
+                                </p>
                             </div>
-                        </div>
-                        <div class="card__wrapper">
-                            <h3 class="card__title">Etnia Barcelona 4 DONATE 56S</h3>
-                            <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                        </div>
-                    </a>
-                </li>
-                <li class="card">
-                    <a href="#">
-                        <div class="card__img">
-                            <div class="image-wrapper">
-                                <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-7.png"
-                                    width="320" height="190" alt="товар">
-                            </div>
-                        </div>
-                        <div class="card__wrapper">
-                            <h3 class="card__title">Gucci 0340S</h3>
-                            <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                        </div>
-                    </a>
-                </li>
-                <li class="card">
-                    <a href="#">
-                        <div class="card__img">
-                            <div class="image-wrapper">
-                                <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-8.png"
-                                    width="320" height="190" alt="товар">
-                            </div>
-                        </div>
-                        <div class="card__wrapper">
-                            <h3 class="card__title">Ultraflex Plus 1 Day 30pk (Somofilcon A)</h3>
-                            <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                        </div>
-                    </a>
-                </li>
+                        </a>
+                    </li>
+
+                    <?php
+                }
+                wp_reset_postdata();
+                ?>
             </ul>
         </div>
     </section>
-
     <section class="services">
         <div class="container">
             <h2 class="title">УСЛУГИ</h2>
