@@ -2620,3 +2620,21 @@ body {
 .page-wrapper {
     min-height: 51vh;
 }
+
+@media (max-width: 1023px) {
+    .search-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 708px) {
+    .search-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 450px) {
+    .search-list {
+        grid-template-columns: 1fr;
+    }
+}
