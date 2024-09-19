@@ -1,0 +1,47 @@
+.category-section {
+    padding: 45px 0;
+}
+
+.category-section__list {
+    display: grid;
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
+}
+
+.category-section__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: #f3f3f3;
+    padding: 20px 0;
+}
+
+.category-section__item .image-wrapper {
+    margin-bottom: 20px;
+}
+
+.category-section__item:nth-child(1),
+.category-section__item:nth-child(4) {
+    background: #101010;
+}
+
+.category-section__item:nth-child(1) h3,
+.category-section__item:nth-child(4) h3 {
+    color: #ffffff;
+}
+
+.category-section__item img {
+    max-height: 160px;
+}
+
+.category-section__item h3 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.3;
+    text-align: center;
+    color: #101010;
+}

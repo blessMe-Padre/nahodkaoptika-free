@@ -1,0 +1,39 @@
+.main-product {
+    padding-bottom: 50px;
+}
+
+.main-product__wrapper {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    gap: 30px;
+}
+
+.main-product__title {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.3;
+    color: #101010;
+}
+
+.product__price {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.3;
+    color: #101010;
+}
+
+
+@media (max-width: 768px) {
+    .main-product__wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 450px) {
+    .main-product__title {
+        font-size: 20px;
+    }
+}

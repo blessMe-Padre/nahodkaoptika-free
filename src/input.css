@@ -1,0 +1,151 @@
+/* Импорт шрифтов */
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap'); */
+
+/* Импорт кастомных стилей для компонентов */
+@import './block/button.css';
+@import './block/menu-button.css';
+@import './block/menu.css';
+@import './block/scrool-top.css';
+@import './block/popup.css';
+@import './block/animateSocialsBtn.css';
+@import './block/header.css';
+@import './block/title.css';
+@import './block/features.css';
+@import './block/category-section.css';
+@import './block/products-section.css';
+@import './block/card.css';
+@import './block/services.css';
+@import './block/contact.css';
+@import './block/gallery.css';
+@import './block/consultation.css';
+@import './block/breadcrumbs.css';
+@import './block/main-product.css';
+@import './block/category.css';
+@import './block/cookie.css';
+@import './block/footer.css';
+
+/* Импорт TailWind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../src/fonts/Nunito-ExtraLight.woff2');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../src/fonts/Nunito-Regular.woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../src/fonts/Nunito-Medium.woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../src/fonts/Nunito-SemiBold.woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../src/fonts/Nunito-Bold.woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+:root {
+    --black: #101010;
+    --white: #ffffff;
+    --dark-gray: #808080;
+    --light-gray: #d1d1d1;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: "Nunito", sans-serif;
+        color: #262626;
+        background: linear-gradient(166deg, #FFF 5.27%, rgba(255, 255, 255, 0.00) 78.75%);
+        font-weight: 400;
+    }
+}
+
+@layer components {
+    .container {
+        @apply max-w-[1480px]
+    }
+}
+
+/* Директивы классов */
+
+.swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5);
+    height: 12px;
+    width: 12px;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: rgb(255, 255, 255);
+}
+
+
+
+/* Прочие классы */
+
+.lock {
+    overflow: hidden;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.image-wrapper {
+    overflow: hidden;
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.1);
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.header-fix {
+    /* background: rgba(20, 19, 19, 0.8); */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+    padding-bottom: 10px;
+}

@@ -1,0 +1,31 @@
+.mobile-menu {
+    background-color: var(--white);
+    transition: opacity 0.8s ease;
+    opacity: 0;
+    visibility: hidden;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    left: 0%;
+    top: 0;
+    padding: 100px 20px;
+    overflow: auto;
+}
+
+
+.mobile-menu.is-active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 20;
+}
+
+
+.mobile-menu a {
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+    color: #101010;
+    display: block;
+    margin-bottom: 20px;
+}
