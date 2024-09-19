@@ -6,6 +6,7 @@ import { initAccordions } from "./module/tabs.js";
 import { initPhoneMask } from "./module/phone-mask.js";
 import { initPopupOrders } from "./module/popup-order.js";
 import { cookieConsentChecker } from './module/cookie-consent-checker.js';
+import { init404 } from "./module/404.js";
 
 
 
@@ -21,4 +22,5 @@ window.addEventListener('DOMContentLoaded', () => {
     initPhoneMask();
     initPopupOrders();
     cookieConsentChecker();
+    init404();
 });

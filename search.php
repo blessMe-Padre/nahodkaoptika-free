@@ -3,7 +3,7 @@
 Template Name: Страница поиска - шаблон
 */
 ?>
-<?php get_header('custom'); ?>
+<?php get_header(); ?>
 
 <main class="container">
     <div class="page-wrapper">
@@ -66,4 +66,4 @@ Template Name: Страница поиска - шаблон
     </div>
 </main>
 
-<?php get_footer('custom'); ?>
+<?php get_footer(); ?>
