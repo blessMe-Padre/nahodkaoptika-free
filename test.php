@@ -15,7 +15,28 @@
     ?>
 </ul>
 
-acsessuari id 3
-linzi id 6
-vedicina id 4
-sun id 5
+<ul class="category__product-list">
+    <?php
+    $categories = get_the_category();
+    // Проверяем, есть ли категории у поста и берем первую категорию
+    if (!empty($categories)) {
+        $category_id = $categories[0]->term_id; // ID первой категории
+        echo $category_id;
+    }
+    ?>
+
+    <li class="card">
+        <a href="#">
+            <div class="card__img">
+                <div class="image-wrapper">
+                    <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-5.png" width="320"
+                        height="190" alt="товар">
+                </div>
+            </div>
+            <div class="card__wrapper">
+                <h3 class="card__title">Nina Ricci</h3>
+                <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
+            </div>
+        </a>
+    </li>
+</ul>

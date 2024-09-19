@@ -29,7 +29,6 @@ get_header();
                     <?php
                     // Получаем текущую категорию, если находимся на странице категории
                     $current_category = get_queried_object();
-
                     // Проверяем, является ли текущий объект категорией
                     $current_category_id = ($current_category && isset($current_category->term_id)) ? $current_category->term_id : 0;
 
@@ -103,63 +102,92 @@ get_header();
                 </div>
 
                 <ul class="category__product-list">
-                    <li class="card">
-                        <a href="#">
-                            <div class="card__img">
-                                <div class="image-wrapper">
-                                    <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-5.png"
-                                        width="320" height="190" alt="товар">
-                                </div>
-                            </div>
-                            <div class="card__wrapper">
-                                <h3 class="card__title">Nina Ricci</h3>
-                                <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="card">
-                        <a href="#">
-                            <div class="card__img">
-                                <div class="image-wrapper">
-                                    <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-5.png"
-                                        width="320" height="190" alt="товар">
-                                </div>
-                            </div>
-                            <div class="card__wrapper">
-                                <h3 class="card__title">Nina Ricci</h3>
-                                <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="card">
-                        <a href="#">
-                            <div class="card__img">
-                                <div class="image-wrapper">
-                                    <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-5.png"
-                                        width="320" height="190" alt="товар">
-                                </div>
-                            </div>
-                            <div class="card__wrapper">
-                                <h3 class="card__title">Nina Ricci</h3>
-                                <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="card">
-                        <a href="#">
-                            <div class="card__img">
-                                <div class="image-wrapper">
-                                    <img src="<?php echo get_template_directory_uri() ?>/src/img/product/image-5.png"
-                                        width="320" height="190" alt="товар">
-                                </div>
-                            </div>
-                            <div class="card__wrapper">
-                                <h3 class="card__title">Nina Ricci</h3>
-                                <p class="card__price">18&nbsp;500<span>&nbsp;₽</span></p>
-                            </div>
-                        </a>
-                    </li>
+                    <?php
+                    // Получение текущей категории
+                    $current_category = get_queried_object();
+
+                    // Определение текущей страницы
+                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+                    // Проверка, если мы находимся на архиве категории и текущая категория определена
+                    if (is_category() && $current_category) {
+                        // Параметры запроса для категорий
+                        $args = array(
+                            'post_type' => 'post', // Замените на ваш тип записи, если отличается
+                            'posts_per_page' => 4, // Количество постов для отображения на одной странице
+                            'paged' => $paged, // Текущая страница
+                            'cat' => $current_category->term_id, // Ограничение по текущей категории
+                        );
+                    } else {
+                        // Параметры запроса для страницы /catalog/ без категории
+                        $args = array(
+                            'post_type' => 'post', // Замените на ваш тип записи, если отличается
+                            'posts_per_page' => 4, // Количество постов для отображения на одной странице
+                            'paged' => $paged, // Текущая страница
+                        );
+                    }
+
+                    // Создание нового объекта WP_Query
+                    $query = new WP_Query($args);
+
+                    // Проверка наличия постов
+                    if ($query->have_posts()) {
+                        // Начало цикла
+                        while ($query->have_posts()) {
+                            $query->the_post();
+                            ?>
+                            <li class="card">
+                                <a href="<?php the_permalink(); ?>">
+                                    <div class="card__img">
+                                        <div class="image-wrapper">
+                                            <?php if (has_post_thumbnail()): ?>
+                                                <?php the_post_thumbnail('large', ['class' => 'main-product-img']); ?>
+                                            <?php else: ?>
+                                                <img src="<?php echo get_template_directory_uri(); ?>/src/img/img-placeholder.jpg"
+                                                    width="320" height="190" alt="товар">
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="card__wrapper">
+                                        <h3 class="card__title"><?php the_title(); ?></h3>
+                                        <p class="card__price">
+                                            <?= number_format(get_field("цена"), 0, '.', ' '); ?><span>&nbsp;₽</span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <?php
+                        }
+                        // Сброс глобальных данных поста
+                        wp_reset_postdata();
+                    } else {
+                        echo '<li>Нет доступных продуктов.</li>';
+                    }
+                    ?>
                 </ul>
+
+                <!-- Добавление пагинации -->
+                <div class="pagination">
+                    <?php
+                    // Вывод пагинации
+                    echo paginate_links(array(
+                        'total' => $query->max_num_pages, // Общее количество страниц
+                        'current' => $paged, // Текущая страница
+                        'format' => '?paged=%#%', // Формат ссылки
+                        'show_all' => false,
+                        'type' => 'plain',
+                        'prev_text' => __('« Назад'), // Текст ссылки "Назад"
+                        'next_text' => __('Вперед »'), // Текст ссылки "Вперед"
+                    ));
+                    ?>
+                </div>
+
+
+
+
+                <!-- навигация -->
+
+                <!-- ============================================================================================================================ -->
             </div>
 
         </div>
