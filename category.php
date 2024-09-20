@@ -53,50 +53,9 @@ get_header();
             </div>
 
             <div class="category__wrapper relative">
+
                 <div class="category__filter-block _tabs">
-                    <div class="_tabs-accordion">
-                        <button class="accordion__button _tabs-button">Пол
-                            <svg class="accordion__button-svg" width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect x="4.5" width="1" height="10" fill="#101010" />
-                                <rect x="10" y="4.5" width="1" height="10" transform="rotate(90 10 4.5)"
-                                    fill="#101010" />
-                            </svg>
-                        </button>
-                        <div class="_tabs-content">
-                            <?php echo do_shortcode('[fe_widget id=65]'); ?>
-                        </div>
-                    </div>
-                    <div class="_tabs-accordion">
-                        <button class="accordion__button _tabs-button">Возраст
-                            <svg class="accordion__button-svg" width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect x="4.5" width="1" height="10" fill="#101010" />
-                                <rect x="10" y="4.5" width="1" height="10" transform="rotate(90 10 4.5)"
-                                    fill="#101010" />
-                            </svg>
-                        </button>
-                        <div class="_tabs-content">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
-                        </div>
-                    </div>
-                    <div class="_tabs-accordion">
-                        <button class="accordion__button _tabs-button">Бренд
-                            <svg class="accordion__button-svg" width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect x="4.5" width="1" height="10" fill="#101010" />
-                                <rect x="10" y="4.5" width="1" height="10" transform="rotate(90 10 4.5)"
-                                    fill="#101010" />
-                            </svg>
-                        </button>
-                        <div class="_tabs-content">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
-                        </div>
-                    </div>
+                    <?php echo do_shortcode('[fe_widget id=65]'); ?>
                 </div>
 
                 <ul class="category__product-list">

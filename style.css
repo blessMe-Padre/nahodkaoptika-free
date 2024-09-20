@@ -1343,7 +1343,8 @@ Version: 1.0
     gap: 20px;
 }
 
-._tabs-content {
+
+/* .wpc-filter-content {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
@@ -1352,31 +1353,85 @@ Version: 1.0
     box-sizing: border-box;
 }
 
-._tabs-content._active {
+.wpc-filter-content._active {
     opacity: 1;
+} */
+
+.widget-title.wpc-filter-title {
+    margin-bottom: 0;
 }
 
-.accordion__button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 10px;
+.wpc-filters-section {
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #d1d1d1;
 }
 
-._tabs-accordion {
-    padding: 10px 0;
-    border-bottom: 1px solid #808080;
+.wpc-filters-section:last-child {
+    border-bottom: none;
 }
 
-.accordion__button-svg {
+.wpc-filters-submit-button {
+    background-color: #101010 !important;
+    border-color: #101010 !important;
+}
+
+.wpc-filter-header {
+    position: relative;
+    cursor: pointer;
+}
+
+/* .wpc-filter-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background-image: url('./src/img/icons/plus.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
     transition: transform 0.3s ease;
 }
 
-.accordion__button._active .accordion__button-svg {
+.wpc-filter-header._active::before {
     transform: rotate(45deg);
+} */
+
+.wpc-term-item-content-wrapper input {
+    display: none;
 }
 
+.wpc-term-item-content-wrapper label {
+    position: relative;
+    padding-left: 25px !important;
+}
+
+.wpc-term-item-content-wrapper label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #808080;
+    border-radius: 2px;
+    width: 20px;
+    height: 20px;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.wpc-term-item-content-wrapper input:checked+label::before {
+    background-color: #101010;
+    background-image: url('./src/img/icons/check.svg');
+}
+
+.wpc-wrap-icons {
+    padding-bottom: 5px;
+}
+
+
+/* ================================================== */
 .category__filter-block {
     max-width: 260px;
 }

@@ -1,25 +1,36 @@
 export const initAccordions = () => {
+    // const accordions = document.querySelectorAll(".wpc-filters-section");
 
-    //accordions
-    const accordions = document.querySelectorAll("._tabs-accordion");
+    // accordions.forEach(el => {
+    //     const button = el.querySelector('.wpc-filter-header');
+    //     const content = el.querySelector('.wpc-filter-content');
+    //     if (button && content) {
+    //         button.addEventListener('click', (evt) => {
+    //             evt.preventDefault();
+    //             console.log(button);
 
-    accordions.forEach(el => {
-        const button = el.querySelector('._tabs-button');
-        const content = el.querySelector('._tabs-content');
+    //             button.classList.toggle('_active');
+    //             content.classList.toggle('_active');
 
-        button.addEventListener('click', (evt) => {
-            evt.preventDefault();
-            const currentButton = evt.currentTarget;
+    //             if (button.classList.contains('_active')) {
+    //                 content.style.maxHeight = content.scrollHeight + 'px';
+    //             } else {
+    //                 content.style.maxHeight = null;
+    //             }
+    //         });
 
-            currentButton.classList.toggle('_active');
-            content.classList.toggle('_active');
+    //         content.querySelectorAll('input, button, select').forEach(input => {
+    //             input.addEventListener('click', (evt) => {
+    //                 evt.stopPropagation(); // Останавливаем всплытие события
+    //             });
+    //         });
+    //         content.querySelectorAll('a').forEach(input => {
+    //             input.addEventListener('click', (evt) => {
+    //                 evt.stopPropagation(); // Останавливаем всплытие события
+    //                 evt.preventDefault(); // Отменяем стандартное поведение ссылки
+    //             });
+    //         });
 
-            if (currentButton.classList.contains('_active')) {
-                content.style.maxHeight = content.scrollHeight + 'px';
-            } else {
-                content.style.maxHeight = null;
-            }
-
-        });
-    });
+    //     }
+    // });
 }
