@@ -55,7 +55,21 @@ get_header();
             <div class="category__wrapper relative">
 
                 <div class="category__filter-block _tabs">
-                    <?php echo do_shortcode('[fe_widget id=65]'); ?>
+                    <?php
+                    $current_url = $_SERVER['REQUEST_URI'];
+
+                    if (strpos($current_url, 'category/acsessuari/') !== false) {
+                        echo do_shortcode('[fe_widget id=78]');
+                    } elseif (strpos($current_url, 'category/linzi/') !== false) {
+                        echo do_shortcode('[fe_widget id=82]');
+                    } elseif (strpos($current_url, 'category/vedicina/') !== false) {
+                        echo do_shortcode('[fe_widget id=86]');
+                    } elseif (strpos($current_url, 'category/sun/') !== false) {
+                        echo do_shortcode('[fe_widget id=90]');
+                    } else {
+                        echo do_shortcode('[fe_widget id=65]');
+                    }
+                    ?>
                 </div>
 
                 <ul class="category__product-list">
