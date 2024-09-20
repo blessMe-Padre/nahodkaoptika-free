@@ -1343,19 +1343,7 @@ Version: 1.0
     gap: 20px;
 }
 
-
-/* .wpc-filter-content {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    will-change: max-height;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-.wpc-filter-content._active {
-    opacity: 1;
-} */
+/* стили фильтров */
 
 .widget-title.wpc-filter-title {
     margin-bottom: 0;
@@ -1380,23 +1368,6 @@ Version: 1.0
     position: relative;
     cursor: pointer;
 }
-
-/* .wpc-filter-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 24px;
-    height: 24px;
-    background-image: url('./src/img/icons/plus.svg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    transition: transform 0.3s ease;
-}
-
-.wpc-filter-header._active::before {
-    transform: rotate(45deg);
-} */
 
 .wpc-term-item-content-wrapper input {
     display: none;
@@ -1430,6 +1401,19 @@ Version: 1.0
     padding-bottom: 5px;
 }
 
+.wpc-filters-range-column {
+    border: 1px solid #808080;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.widget-title.wpc-filter-title {
+    padding-bottom: 5px;
+}
+
+.wpc-filter-header.wpc-filter-title button {
+    align-items: flex-start;
+}
 
 /* ================================================== */
 .category__filter-block {
